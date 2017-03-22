@@ -1,0 +1,17 @@
+.dropdown,
+.dropdown-toggle,
+.dropdown-menu {
+	width: 100%;	
+}
+
+a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/*.text-wrapper{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}*/

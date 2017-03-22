@@ -1,0 +1,25 @@
+                <div class="row">
+                    <header>
+                        <div class="col-md-7">
+                            <nav class="navbar-default pull-left">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                            </nav>
+                            
+                            <div class="row">
+                                    <label>File Types: </label>
+                                    <select2 [data]="exampleData" (valueChanged)="valueChanged($event)" id="select2-dropdown" class="category-filter" (change)="onChange($event.target.value)"></select2>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="header-rightside">
+                            </div>
+                        </div>
+                    </header>
+                </div>

@@ -1,0 +1,15 @@
+<div class="inline-edit">
+    <span [hidden]="!isDisplay" class="category-row">
+        <a (click)="beginEdit(editText)" href="javascript:void(0)">{{ text }}</a>
+        <img src="../../assets/images/multiply.png" class="pull-right delete-category" (click)="showWarning()" data-toggle="modal" data-target="#confirmation_modal" />
+    </span>
+    <span [hidden]="isDisplay">
+              <div class="col-md-4">
+                <input  (keyup.enter)="editDone(editText.value)" 
+                        (focusout)="editDone(editText.value)" #editText [value]="text" type="text"  class="form-control">
+              </div>
+    </span>
+</div>
+
+
+

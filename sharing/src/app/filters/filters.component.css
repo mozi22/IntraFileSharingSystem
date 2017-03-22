@@ -1,0 +1,10 @@
+.pull-down{
+    margin-top:20%;
+}
+
+.filter-dashboard{
+    position: absolute;
+    right: 0;
+    width: 80%;
+    height: auto;
+}

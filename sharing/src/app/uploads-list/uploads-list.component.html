@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="filterable">
+            <table class="table">
+                <thead>
+                    <tr class="filters">
+                        <th class="col-md-2"><input type="text" class="form-control" placeholder="Uploader" disabled></th>
+                        <th class="col-md-6"><input type="text" class="form-control" placeholder="Description" disabled></th>
+                        <th class="col-md-1"><input type="text" class="form-control" placeholder="Type" disabled></th>
+                        <th class="col-md-2"><input type="text" class="form-control" placeholder="Time" disabled></th>
+                        <th class="col-md-1"><input type="text" class="form-control" placeholder="" disabled></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let post of (postss | filterpipe:selectedCategory); let i = index ">
+                        <td>
+                            <a href="#" [innerHTML]="post.username">mozi22</a>
+                        </td>
+                        <td>
+
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="upload-title" data-toggle="collapse" attr.data-target="#demo{{i}}" [innerHTML]="post.title">
+                                    </div>
+                                    <div id="demo{{i}}" class="collapse" [innerHTML]="post.description">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td [innerHTML]="post.category">
+                        </td>
+                        <td [innerHTML]="post.created_at">
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <a href="javascript:void(0)" id="dropdownMenu1" aria-expanded="true" aria-haspopup="true" data-toggle="dropdown">Download</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
+                                    <li *ngFor="let download of post.filePath" data-placement="left" data-toggle="tooltip" title="{{download}}">
+                                        <a href="{{base_url}}/downloadfile?filename={{download}}&id={{user_id}}&access_token={{access_token}}" target="_blank"   [innerHTML]="download"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                          </td>
+
+                    </tr>
+                    <tr>
+                       <td colspan="5">
+                       </td> 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

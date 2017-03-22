@@ -1,0 +1,100 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<body class="home">
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            
+            
+            
+            <side-nav [enabled6]="active"></side-nav>
+
+            <div class="col-md-10 col-sm-11 display-table-cell v-align userslist-dashboard">
+
+                <div class="user-dashboard">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <h1>Users</h1>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="pull-right">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+<div class="container">
+    <div class="row">
+        <div class="filterable">
+            <table class="table">
+                <thead>
+                    <tr class="filters">
+                        <th class="col-md-2">Usernames</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let list of userslist; let i = index">
+                        <td>
+                            <span class="category-row">
+                                <a data-toggle="modal" (click)="setModalValues(list.username,list.id)" data-target="#userupdate_modal" href="javascript:void(0)">{{ list.username }}</a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="userslist_error_messages" class="alert alert-{{error_type}} text-center" [innerHTML]="errorMessage">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                     </div>
+                        <div class="col-md-7 col-sm-7 col-xs-12 gutter">
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- Modal -->
+<div class="modal fade" id="userupdate_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><label>User Details</label></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="form-control-label">Username</label>
+            <input type="text" class="form-control" id="recipient-name" [(ngModel)]="current_user.username" name="username" placeholder="Username...">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="form-control-label">Update Password</label>
+            <input type="password" class="form-control" id="password" [(ngModel)]="current_user.password" name="categoryName" placeholder="Add new Password here...">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="form-control-label">Confirm Password</label>
+            <input type="password" class="form-control" id="cpassword" [(ngModel)]="cpassword" name="confirm_password" placeholder="Add Confirm Password...">
+          </div>
+        </form>
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateUserDetails()" data-dismiss="modal">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
