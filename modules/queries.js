@@ -68,10 +68,6 @@ Queries.prototype.run = function(res,req,query){
     });
 }
 
-
-
-
-
 Queries.prototype.performOperation = function(res, req, code, params) {
     if(code == this.codes.POSTS_GET_USER_DASHBOARD){
         this.getUserPosts(res,req,params);

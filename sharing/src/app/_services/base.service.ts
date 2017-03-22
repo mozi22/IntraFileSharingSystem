@@ -25,7 +25,7 @@ export class BaseService {
         if(localStorage.getItem("access_token") !== undefined && 
            localStorage.getItem("access_token") != "" &&
            localStorage.getItem("access_token") != null){
-            return true;  
+            return true;
         }
         else{
             return false;

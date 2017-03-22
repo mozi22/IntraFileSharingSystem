@@ -75,11 +75,13 @@ export class DashboardComponent  {
     }
 
     public getPosts(getDashboardOperation){
-      console.log("call with userid = "+localStorage.getItem("user_id"));
       getDashboardOperation.subscribe(
         (posts) => { 
-          console.log("the number of posts returned = "+posts.data.length);
           if(posts.type == "200"){
+
+            if(posts.data === undefined){
+              location.reload();
+            }
 
             if(posts.data.length == 0){
               this.hide_load_more = false; 
@@ -92,7 +94,7 @@ export class DashboardComponent  {
             this.errorMessage = "No More records";
           }
         },
-        (err) => console.log(err),
+        (err) => location.reload(),
         ()=> console.log("")
         );
     }
@@ -150,7 +152,7 @@ export class DashboardComponent  {
           }
         },
         (err) => console.log(err),
-        ()=> console.log("done")
+        ()=> console.log("")
         );
     }
 

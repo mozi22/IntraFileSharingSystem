@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /build/
 /benchpress-build/
 .DS_Store
@@ -22,7 +23,6 @@ npm-debug.log
 /tmp/
 /scripts/bower/bower-*
 .vscode
-/node_modules/
 *.log
 *.stackdump
 =======
@@ -63,3 +63,4 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+>>>>>>> cab62b1b7535514fce48aadfa080e6ec215552ad
