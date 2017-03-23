@@ -1,0 +1,126 @@
+<div class="container">
+	<div class="row">
+      <div class="col-md-9 col-md-offset-1">
+        <div class="form-aligner">
+          <form class="form-horizontal" action="" method="post">
+          <fieldset>
+    
+            <!-- Name input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="name">Title</label>
+              <div class="col-md-9">
+                <input id="title" name="title"  [(ngModel)]="title" type="text" placeholder="Add a short title" class="form-control">
+              </div>
+            </div>
+    
+            <!-- Message body -->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="message">Detailed Description</label>
+              <div class="col-md-9">
+                <textarea class="form-control"  [(ngModel)]="description" id="message" name="message" placeholder="Please enter your description here..." rows="5">{{description}}</textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="message"></label>
+              <div class="col-md-9">
+                    <div ng2FileDrop
+                        [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                        (fileOver)="fileOverBase($event)"
+                        [uploader]="uploader"
+                        class="well my-drop-zone">
+                        Drop Your Files Here.
+                    </div>
+              </div>
+          </div>
+
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="message">Select your category:</label>
+              <div class="col-md-9">
+                <select2 [data]="exampleData" 
+                        (valueChanged)="valueChanged($event)" 
+                        id="select2-dropdown" class="category-filter" (change)="onChange($event.target.value)"></select2>
+              </div>
+            </div>
+
+
+          <div class="form-group">
+              <label class="col-md-3 control-label" for="message"></label>
+              <div class="col-md-9">
+        <table class="table">
+                <thead>
+                <tr>
+                    <th width="50%">Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                   <tr *ngFor="let item of uploader.queue">
+                      <td><strong>{{ item?.file?.name }}</strong></td>
+                      <!--<td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                      <td *ngIf="uploader.isHTML5">
+                          <div class="progress" style="margin-bottom: 0;">
+                              <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                          </div>
+                      </td>-->
+                      <td class="text-center">
+                          <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                          <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                          <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                      </td>
+                      <td nowrap>
+                          <button type="button" class="btn btn-danger btn-xs"
+                                  (click)="item.remove();updateFileCount();">
+                              <span class="glyphicon glyphicon-trash"></span> Remove
+                          </button>
+                      </td>
+                  </tr>
+                </tbody>
+            </table>
+              </div>
+          </div>
+
+           <div class="form-group">
+              <label class="col-md-3 control-label" for="message"></label>   
+               <div class="col-md-9" *ngIf="showProgress">
+                    Upload progress:
+                    <div class="progress" >
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                    </div>
+                <!--<button type="button" class="btn btn-success btn-s"
+                        (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                    <span class="glyphicon glyphicon-upload"></span> Upload all
+                </button>
+                <button type="button" class="btn btn-warning btn-s"
+                        (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                </button>
+                <button type="button" class="btn btn-danger btn-s"
+                        (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                    <span class="glyphicon glyphicon-trash"></span> Remove all
+                </button>-->
+                </div>
+            </div>
+              <!-- Form actions -->
+              <div class="form-group add-file-submit">
+                <div class="col-md-12 text-right">
+                  <button type="button" (click)="resetFields()" class="btn btn-success btn-lg" [disabled]="resetDisabled">Reset Fields</button>
+                  <button type="submit" (click)="uploader.uploadAll()" class="btn btn-primary btn-lg" [disabled]="submitDisabled">Submit</button>
+                </div>
+              </div>
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div id="upload_error_messages" class="alert alert-{{error_type}} text-center" [innerHTML]="errorMessage">
+                        
+                    </div>
+                </div>
+            </div>
+
+          </fieldset>
+          </form>
+        </div>
+      </div>
+	</div>
+</div>

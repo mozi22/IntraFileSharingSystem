@@ -1,0 +1,98 @@
+
+
+
+     
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<body class="home">
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            
+            
+            
+            <side-nav [enabled3]="active"></side-nav>
+
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+
+                <div class="user-dashboard sign-up-user">
+                    <h1>Add User</h1>
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+
+<div class="container move-down">
+	<div class="row">
+      <div class="col-md-9 col-md-offset-1">
+        <div class="form-aligner">
+          <form class="form-horizontal" action="" method="post">
+          <fieldset>
+    
+            <!-- Name input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="name">Username</label>
+              <div class="col-md-9">
+                <input id="username" name="username"  [(ngModel)]="current_user.username" type="text" placeholder="Enter username" class="form-control">
+              </div>
+            </div>
+    
+            <!-- Message body -->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="message">Password</label>
+              <div class="col-md-9">
+                <input id="password" name="password"  [(ngModel)]="current_user.password" type="password" placeholder="Password" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="message">Confirm Password</label>
+              <div class="col-md-9">
+                <input id="cpassword" name="cpassword"  [(ngModel)]="cpassword" type="password" placeholder="Confirm Password" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="message">Credentials</label>
+              <div class="col-md-9">
+                  <select [(ngModel)]="current_user.credential" name="user_type">
+                    <option value="1" selected>Normal User</option>
+                    <option value="2">Super User</option>
+                  </select>
+              </div>
+            </div>
+
+
+
+
+              <!-- Form actions -->
+              <div class="form-group add-file-submit">
+                <div class="col-md-12 text-right">
+                  <button type="button" (click)="resetFields()" class="btn btn-success btn-lg" [disabled]="resetDisabled">Reset Fields</button>
+                  <button type="submit" (click)="saveUser()" class="btn btn-primary btn-lg" >Submit</button>
+                </div>
+              </div>
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div id="signup_error_messages" class="alert alert-{{error_type}} text-center" [innerHTML]="errorMessage">
+                        
+                    </div>
+                </div>
+            </div>
+
+          </fieldset>
+          </form>
+        </div>
+      </div>
+	</div>
+</div>
+                        </div>
+                        <div class="col-md-7 col-sm-7 col-xs-12 gutter">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>

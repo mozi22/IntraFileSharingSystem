@@ -1,0 +1,151 @@
+/* You can add global styles to this file, and also import other style files */
+/*Main CSS*/
+
+.filterable {
+    margin-top: 15px;
+}
+.filterable .panel-heading .pull-right {
+    margin-top: -20px;
+}
+.filterable .filters input[disabled] {
+    background-color: transparent;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+}
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]::-moz-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]:-ms-input-placeholder {
+    color: #333;
+}
+.upload-title{
+    cursor: pointer;
+}
+
+.home {
+    background: #f6f7fa;
+}
+
+#navigation {
+    background: #0e1a35;
+}
+
+#navigation {
+    padding: 0;
+    height: 100vh;
+}
+
+.display-table {
+    display: table;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.display-table-row {
+    display: table-row;
+    height: 100%;
+}
+
+.display-table-cell {
+    display: table-cell;
+    float: none;
+    height: 100%;
+}
+
+.v-align {
+    vertical-align: top;
+}
+.logo img {
+    max-width: 180px;
+    padding: 16px 0 17px;
+    width: 100%;
+}
+
+.header-top {
+    margin: 0;
+    padding-top: 2px;
+}
+
+.header-top img {
+    border-radius: 50%;
+    max-width: 48px !important;
+    width: 100%;
+}
+
+.add-project {
+    background: #5584ff none repeat scroll 0 0;
+    border-radius: 100px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 27px 10px 45px;
+    position: relative;
+}
+
+.header-rightside .nav > li > a:focus,
+.header-rightside .nav > li > a:hover {
+    background: none;
+    text-decoration: none;
+}
+
+.add-project::before {
+    content: "";
+    height: 12px;
+    left: 17px;
+    position: absolute;
+    top: 12px;
+    width: 12px;
+}
+
+.add-project:hover {
+    color: #ffffff;
+}
+
+.header-top i {
+    color: #0e1a35;
+}
+
+.icon-info {
+    position: relative;
+}
+.navi i {
+    font-size: 20px;
+}
+.label.label-primary {
+    border-radius: 50%;
+    font-size: 9px;
+    left: 8px;
+    position: absolute;
+    top: -9px;
+}
+
+.icon-info .label {
+    border: 2px solid #ffffff;
+    font-weight: 500;
+    padding: 3px 5px;
+    text-align: center;
+}
+
+.header-top li {
+    display: inline-block;
+    text-align: center;
+}
+
+.header-top .dropdown-toggle {
+    color: #0e1a35;
+}
+
+.header-top .dropdown-menu {
+    border: medium none;
+    left: -85px;
+    padding: 17px;
+}
+
+
