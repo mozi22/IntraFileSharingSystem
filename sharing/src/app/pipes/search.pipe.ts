@@ -11,6 +11,13 @@ export class SearchPipe implements PipeTransform {
     if(searchTerm.trim() == ""){
       return allPosts;
     }
-    return allPosts.filter(post => post.description.toLowerCase().includes(searchTerm.toLowerCase()) || post.title.toLowerCase().includes(searchTerm));
+
+    var lowerCaseSearchTerm = searchTerm.toLowerCase();
+
+    return allPosts.filter(post => post.description.toLowerCase().includes(lowerCaseSearchTerm) || 
+    post.title.toLowerCase().includes(lowerCaseSearchTerm) ||
+    post.username.toLowerCase().includes(lowerCaseSearchTerm) ||
+    post.created_at.toLowerCase().includes(lowerCaseSearchTerm) ||
+    post.category.toLowerCase().includes(lowerCaseSearchTerm));
   }
 }

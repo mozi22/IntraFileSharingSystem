@@ -13,13 +13,15 @@
                             </nav>
                             
                             <div class="row">
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="Search..." (keyup)="searchTerm.emit($event.target.value)"  />
+                                </div>
+                                <div class="col-md-3">
                                     <label>File Types: </label>
-                                    <select2 [data]="exampleData" (valueChanged)="filterRecords.emit($event)" id="select2-dropdown" class="category-filter" (change)="onChange($event.target.value)"></select2>
+                                    <select2 [data]="exampleData" (valueChanged)="filterRecords.emit($event)" id="select2-dropdown form-control" class="category-filter" (change)="onChange($event.target.value)"></select2>
+                                </div>
                             </div>
 
-                            <div class="row">
-                                <input type="text" placeholder="Search..." (keyup)="searchTerm.emit($event.target.value)"  />
-                            </div>
                         </div>
                         <div class="col-md-5">
                             <div class="header-rightside">
