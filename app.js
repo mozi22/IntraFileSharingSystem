@@ -11,19 +11,32 @@ var bodyParser = require('body-parser')
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
- app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200'); res.setHeader('Access-Control-Allow-Methods', 'POST,GET');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
-});
- 
-var DIR = './uploads/';
-// var upload = multer({ dest: './uploads' }).any();
-// app.use(upload,function(req,res,next){
-  
+//  app.use(function (req, res, next) {
+//   res.setHeader('Access-Control-Allow-Origin', 'http://10.5.163.13:4200'); 
+//   res.setHeader('Access-Control-Allow-Methods', 'POST,GET');
+//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization');
+//   res.setHeader('Access-Control-Allow-Credentials', true);
+//   next()
 // });
+ 
+//app.user(bodyParser.json());
+// after the code that uses bodyParser and other cool stuff
+var originsWhitelist = [
+  'http://localhost:4200',      //this is my front-end url for development
+  'http://10.5.163.13:4200'
+];
+var corsOptions = {
+  origin: function(origin, callback){
+        var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+        callback(null, isWhitelisted);
+  },
+  credentials:true
+}
+//here is the magic
+app.use(cors(corsOptions));
+
+
+var DIR = './uploads/';
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {

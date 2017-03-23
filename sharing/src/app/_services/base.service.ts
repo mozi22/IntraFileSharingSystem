@@ -5,7 +5,7 @@ import { Http , Response,  Headers, RequestOptions, URLSearchParams  } from '@an
 @Injectable()
 export class BaseService {
 
-    public base_url = "http://localhost:3000";
+    public base_url = "http://10.5.163.13:3000";
     public headers;
     public options;
 
