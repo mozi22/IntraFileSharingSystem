@@ -76,7 +76,9 @@ app.post('/deletePost',cors(), function(req,res){
     var params = {
       access_token: req.body.access_token,
       id: req.body.id,
-      postid: req.body.postid
+      postid: req.body.postid,
+      filepath: req.body.path,
+      filesystem: fs
     };
 
   queryy.verifyUserLogin(res,req,codes.POSTS_DELETE_FILE,params);

@@ -2,6 +2,7 @@ var promise = require('../node_modules/bluebird');
 var md5 = require('../node_modules/md5');
 var passwordHash = require('../node_modules/password-hash');
 
+var fs = require('../node_modules/fs.realpath');
 
 
 var Queries = function(codes){
@@ -109,6 +110,14 @@ Queries.prototype.performOperation = function(res, req, code, params) {
     }
 }
 Queries.prototype.deletePost = function(res,req,params){
+
+    for(var i=0;i<params.filepath.length;i++){
+        params.filesystem.unlink('./uploads/'+params.filepath[i], (err) => {
+            if (err) throw err;
+            console.log('successfully deleted');
+        });
+    }
+
     var query = 'delete from "UserUploads" WHERE id='+params.postid;
     this.run(res,req,query);
 }

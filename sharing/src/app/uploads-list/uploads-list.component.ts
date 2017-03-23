@@ -17,7 +17,7 @@ export class UploadsListComponent{
   @Input() selectedCategory: string = "0";
   @Input() enableDeletion: boolean = false;
 
-  selectedPostID: number = 0;
+  selectedPostIndex: number = -1;
 
   allposts: Post[];
   filteredPosts: Post[];
@@ -62,13 +62,13 @@ export class UploadsListComponent{
   }
 
   selectedDeletionPost(id:number){
-    this.selectedPostID = id;
+    this.selectedPostIndex = id;
   }
 
   deletePost(){
-
+    
     let deletepost:Observable<any>;
-    deletepost = this.dashboardService.deletePost(this.selectedPostID);
+    deletepost = this.dashboardService.deletePost(this.postss[this.selectedPostIndex].id,this.postss[this.selectedPostIndex].filePath);
     deletepost.subscribe(
         (result) => {
 
@@ -82,7 +82,7 @@ export class UploadsListComponent{
         );
   }
   public removeItemFromList(){
-    let index = this.arrayObjectIndexOf(this.postss,this.selectedPostID,"id");
+    let index = this.arrayObjectIndexOf(this.postss,this.postss[this.selectedPostIndex].id,"id");
     this.postss.splice(index,1);
   }
 

@@ -81,11 +81,12 @@ export class DashboardService extends BaseService {
                          .catch(this.handleError);
 
     }
-    public deletePost(postid: number){
+    public deletePost(postid: number,filepath: Array<string>){
 
         let params = {
             access_token: localStorage.getItem('access_token'),
             id: localStorage.getItem('user_id'),
+            path: filepath,
             postid: postid
         }
 
