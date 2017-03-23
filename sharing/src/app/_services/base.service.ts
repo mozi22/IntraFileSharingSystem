@@ -10,18 +10,10 @@ export class BaseService {
     public options;
 
     constructor() {
-<<<<<<< HEAD
         this.headers = new Headers({'Content-Type' : 'application/json', 'Accept': 'application/json', 'Access-Control-Allow-Headers':'Authorization'});
         this.options = new RequestOptions({ headers: this.headers });
     }
 
-=======
-        this.headers = new Headers({'Content-Type' : 'application/json', 'Accept': 'application/json'});
-        this.options = new RequestOptions({ headers: this.headers });
-    }
-
-
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
     /** Login Module */
 
     /**
