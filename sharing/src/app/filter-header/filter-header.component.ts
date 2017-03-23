@@ -12,9 +12,8 @@ export class FilterHeaderComponent {
   @Input() exampleData: Array<Select2OptionData>;
   @Input() selectedCategory: string = "0";
   @Output() filterRecords: EventEmitter<string> = new EventEmitter<string>();
+  @Output() searchTerm: EventEmitter<string> = new EventEmitter<string>();
 
 
-  valueChanged(value: string){
-    this.filterRecords.emit(value);
-  }
+
 }

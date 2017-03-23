@@ -26,6 +26,8 @@ export class UploadsListComponent{
   access_token: string;
   base_url: string;
 
+  @Input() searchTerm: string = "";
+
   constructor(private dashboardService: DashboardService,public router: Router, public baseService: BaseService) {
     if(!baseService.alreadyLoggedIn(router)){
       router.navigateByUrl('/login');

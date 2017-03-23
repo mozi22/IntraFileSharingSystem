@@ -11,7 +11,6 @@ export class FilterPipe implements PipeTransform {
     if(category == "0"){
       return allPosts;
     }
-
     return allPosts.filter(post => post.catid.toString() == category);
   }
 }

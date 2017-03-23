@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import {CUSTOM_ELEMENTS_SCHEMA, enableProdMode} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { AlertModule } from 'ng2-bootstrap';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 /** Pipes */
 import { FilterPipe } from './pipes/filterposts.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 
 
 /** Libraries */
@@ -60,6 +61,7 @@ enableProdMode();
     FiltersListComponent,
     InlineEditComponent,
     FilterPipe,
+    SearchPipe,
     SignupComponent,
     UserslistComponent
   ],

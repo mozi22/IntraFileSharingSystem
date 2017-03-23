@@ -9,9 +9,7 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/*.text-wrapper{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-}*/
+
+.delete-post:hover{
+  cursor: pointer;
+}

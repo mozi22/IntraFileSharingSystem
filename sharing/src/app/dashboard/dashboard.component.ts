@@ -24,7 +24,10 @@ export class DashboardComponent  {
   public myfiles_active:string = "";
   public posts: Array<Post> = new Array<Post>();
   public categories: Category[];
+  
   public selectedCategory: string = "0";
+  public searchTerm : string = "";
+
   public lastPostID: string = "";
   public errorMessage: string;
   public hide_load_more:boolean = true;
@@ -45,6 +48,8 @@ export class DashboardComponent  {
 
       this.getRecentPosts("-1");
       this.getCategories();
+
+
     }
 
     public getUserPosts(){
@@ -89,6 +94,7 @@ export class DashboardComponent  {
             if(posts.data.length == 0){
               this.hide_load_more = false; 
             }
+
 
             this.organizeData(posts.data);
             this.disable_load_more = false;
@@ -161,6 +167,9 @@ export class DashboardComponent  {
 
     setCurrentCategory(category:any):void{
       this.selectedCategory = category.value;
+    }
+    setSearchTermValues(term:any):void{
+      this.searchTerm = term;
     }
 
 
