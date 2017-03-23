@@ -162,16 +162,12 @@ export class DashboardComponent  {
 
 
     private loadMorePosts(){
-<<<<<<< HEAD
-	 if(this.posts === undefined || this.posts.length === 0){
-		this.hide_load_more = false;
-		return;
+  	 if(this.posts === undefined || this.posts.length === 0){
+        this.hide_load_more = false;
+        return;
       }
       this.disable_load_more = true;
 
-=======
-      this.disable_load_more = true;
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
       this.lastPostID = this.posts[this.posts.length - 1].id.toString();
       if(!this.user_posts_only){
         this.getRecentPosts(this.lastPostID);

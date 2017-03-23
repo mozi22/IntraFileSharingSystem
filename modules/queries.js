@@ -8,10 +8,6 @@ var Queries = function(codes){
 
     this.codes = codes;
     this.options = {
-<<<<<<< HEAD
-
-=======
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
         // Initialization Options
         promiseLib: promise
     };
@@ -22,21 +18,13 @@ var Queries = function(codes){
     this.cn = {
         host: 'localhost',
         port: 5432,
-<<<<<<< HEAD
         database: 'postgres',
-=======
-        database: 'sharing',
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
         user: 'postgres',
         password: 'root'
     };
 
     this.pgp = require('../node_modules/pg-promise')(this.options);
     this.db = this.pgp(this.cn);
-<<<<<<< HEAD
-=======
-
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
 }
 
 
@@ -139,10 +127,6 @@ Queries.prototype.getAllUsers = function(res,req,params){
 Queries.prototype.downloadFile = function(res,req,params){
       res.download("./uploads/"+params.filename);
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
 Queries.prototype.insertNewPost = function(res,req,params){
 
     if(params.firstTime == "true"){
@@ -177,10 +161,6 @@ Queries.prototype.deleteCategory = function(res,req,params){
     var query = 'DELETE FROM "Categories" WHERE "id"='+params.catid+'';
     this.run(res,req,query);
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
 Queries.prototype.updateCategory = function(res,req,params){
     var query = 'UPDATE "Categories" SET "category"=\''+params.categoryname+'\' WHERE "id"='+params.catid+'';
     this.run(res,req,query);
@@ -239,10 +219,6 @@ Queries.prototype.getUserPersonalPosts = function(res,req,params){
         return res.json(err);
         });
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
 }
 
 
@@ -278,10 +254,6 @@ Queries.prototype.getUserPosts = function(res,req,params){
                 
                 var upperlimit = data[0].id;
                 var lowerlimit = data[0].id - self.POSTS_LIMIT;
-<<<<<<< HEAD
-
-=======
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
                 if(lowerlimit < 0){
                     lowerlimit = 0;
                 }
@@ -296,15 +268,8 @@ Queries.prototype.getUserPosts = function(res,req,params){
                                         +'ORDER BY uploads."id" desc';
 
                 self.run(res,req,query);
-<<<<<<< HEAD
         }).catch(function (err) {
-    
             return res.json(err);
-=======
-        })
-        .catch(function (err) {
-        return res.json(err);
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
         });
     }
 }
@@ -356,10 +321,6 @@ Queries.prototype.loginUser = function(res,req,params){
 
 
 Queries.prototype.signUpUser = function(res,req,params){
-<<<<<<< HEAD
-
-=======
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
     var query = 'SELECT * FROM  "Users" WHERE "Users"."username" = \''+params.username+'\'';
     var self = this;
 

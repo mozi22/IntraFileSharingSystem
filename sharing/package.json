@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
   "name": "ng-sharing",
   "version": "1.0.0",
-=======
-  "name": "sharing",
-  "version": "0.0.0",
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
@@ -26,10 +21,7 @@
     "@angular/platform-browser-dynamic": "^2.4.0",
     "@angular/router": "^3.4.0",
     "core-js": "^2.4.1",
-<<<<<<< HEAD
     "ng": "0.0.0-rc6",
-=======
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
     "ng2-file-upload": "^1.2.0",
     "ng2-inline-editor": "^0.1.1-alpha.10",
     "rxjs": "^5.1.0",
@@ -64,12 +56,9 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
     "typescript": "^2.0.10"
-<<<<<<< HEAD
   },
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-beta.32.3.",
   "main": "karma.conf.js",
   "author": "Muazzam Ali"
-=======
-  }
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
 }
+

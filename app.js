@@ -14,10 +14,7 @@ app.use(bodyParser.json());
  app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200'); res.setHeader('Access-Control-Allow-Methods', 'POST,GET');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-<<<<<<< HEAD
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization');
-=======
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
   res.setHeader('Access-Control-Allow-Credentials', true);
   next();
 });
@@ -95,15 +92,9 @@ app.post('/login',cors(), function (req, res) {
 app.post('/signup',cors(), function (req, res) {
 
     var params = {
-<<<<<<< HEAD
-    username: req.query.username,
-    password: req.query.password,
-    credentials: req.query.credentials,
-=======
     username: req.body.username,
     password: req.body.password,
     credentials: req.body.credentials,
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
 
     // access_token of super user
     access_token: req.body.access_token,
@@ -111,14 +102,9 @@ app.post('/signup',cors(), function (req, res) {
     // id of super user
     id: req.body.id
   }
-<<<<<<< HEAD
-
   //queryy.verifyUserLogin(res,req,codes.USER_START_SIGN_UP,params);
 
-  queryy.signUpUser(res,req,params);
-=======
   queryy.verifyUserLogin(res,req,codes.USER_START_SIGN_UP,params);
->>>>>>> 7326eab94d17b82c001f6d4f5c532d8f6864d4ec
 
 });
 
