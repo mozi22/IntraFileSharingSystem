@@ -114,7 +114,6 @@ Queries.prototype.deletePost = function(res,req,params){
     for(var i=0;i<params.filepath.length;i++){
         params.filesystem.unlink('./uploads/'+params.filepath[i], (err) => {
             if (err) throw err;
-            console.log('successfully deleted');
         });
     }
 

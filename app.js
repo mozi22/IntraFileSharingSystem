@@ -4,11 +4,15 @@ var cors = require('cors');
 var fs = require('fs');
 var Query = require('./modules/queries.js');
 var Codes = require('./modules/codes.js');
-var codes = new Codes();
-var queryy = new Query(codes);
 var multer = require('multer');
+var schedule = require('node-schedule');
+var child_process = require('child_process');
 var bodyParser = require('body-parser')
 var app = express();
+
+var codes = new Codes();
+var queryy = new Query(codes);
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 //  app.use(function (req, res, next) {
@@ -84,6 +88,7 @@ app.post('/deletePost',cors(), function(req,res){
   queryy.verifyUserLogin(res,req,codes.POSTS_DELETE_FILE,params);
 });
 
+
 app.get('/getusers',cors(),function(req,res){
 
         queryy.getAllUsers(res,req,codes.GET_ALL_USERS,"");
@@ -103,6 +108,15 @@ app.post('/updateuser',cors(),function(req,res){
   queryy.performOperation(res,req,codes.UPDATE_USER_DETAILS,params);
 });
 
+
+/** Create backup at 2:30 AM every night */
+var j = schedule.scheduleJob({hour: 2, minute: 30}, function(){
+
+  /** Create the postgres script */
+  child_process.exec('path_to_bat_file', function(error, stdout, stderr) {
+      res.send('done');
+  });
+});
 
 app.post('/login',cors(), function (req, res) {
 
