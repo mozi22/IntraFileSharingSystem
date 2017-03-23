@@ -31,6 +31,7 @@ var  codes = function(){
     this.POSTS_INSERT_NEW_DETAILS               = "25";
     this.POSTS_GET_USER_PERSONAL_DASHBOARD      = "26";
     this.POSTS_DOWNLOAD_FILE      = "27";
+    this.POSTS_DELETE_FILE      = "28";
 
     
     this.CODE_LOGOUT            = "1010";

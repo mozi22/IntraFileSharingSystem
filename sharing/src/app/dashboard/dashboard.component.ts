@@ -29,6 +29,7 @@ export class DashboardComponent  {
   public errorMessage: string;
   public hide_load_more:boolean = true;
   public disable_load_more:boolean = false;
+  public enableDeletion: boolean = false;
 
 
   public user_posts_only: boolean = false;
@@ -55,9 +56,11 @@ export class DashboardComponent  {
         this.page_title = "Recent Uploads";
         this.getRecentPosts("-1");
         this.user_posts_only = false;
+        this.enableDeletion = false;
         return;
       }
 
+      this.enableDeletion = true;
       this.page_title = "My Uploads";
       this.user_posts_only = true;
 

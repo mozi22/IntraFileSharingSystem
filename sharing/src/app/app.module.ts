@@ -2,7 +2,7 @@
 /** Default Imports */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, enableProdMode} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
@@ -44,7 +44,7 @@ import { SignupComponent } from './signup/index';
 import { UserslistComponent } from './userslist/index';
 
 
-
+enableProdMode();
 @NgModule({
   declarations: [
     AppComponent,

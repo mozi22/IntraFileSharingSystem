@@ -81,6 +81,19 @@ export class DashboardService extends BaseService {
                          .catch(this.handleError);
 
     }
+    public deletePost(postid: number){
+
+        let params = {
+            access_token: localStorage.getItem('access_token'),
+            id: localStorage.getItem('user_id'),
+            postid: postid
+        }
+
+        return this.http.post(this.baseService.base_url+"/deletePost",JSON.stringify(params), this.options) 
+                         .map(this.extractData) 
+                         .catch(this.handleError);
+
+    }
 
     public updateUser(user:CurrentUser){
 

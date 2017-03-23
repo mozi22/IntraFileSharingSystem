@@ -72,6 +72,15 @@ app.post('/uploadfile',[upload.any(), function (req, res) {
       });
 }]);
 
+app.post('/deletePost',cors(), function(req,res){
+    var params = {
+      access_token: req.body.access_token,
+      id: req.body.id,
+      postid: req.body.postid
+    };
+
+  queryy.verifyUserLogin(res,req,codes.POSTS_DELETE_FILE,params);
+});
 
 app.get('/getusers',cors(),function(req,res){
 

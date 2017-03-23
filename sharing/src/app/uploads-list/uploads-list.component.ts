@@ -15,6 +15,9 @@ export class UploadsListComponent{
   @Input() postss: Post[];
   @Input() category: string = "";
   @Input() selectedCategory: string = "0";
+  @Input() enableDeletion: boolean = false;
+
+  selectedPostID: number = 0;
 
   allposts: Post[];
   filteredPosts: Post[];
@@ -51,11 +54,42 @@ export class UploadsListComponent{
           }
         },
         (err) => console.log(err),
-        ()=> console.log("done")
+        ()=> console.log("")
         );
 
   }
 
+  selectedDeletionPost(id:number){
+    this.selectedPostID = id;
+  }
+
+  deletePost(){
+
+    let deletepost:Observable<any>;
+    deletepost = this.dashboardService.deletePost(this.selectedPostID);
+    deletepost.subscribe(
+        (result) => {
+
+          if(result.type == "200"){
+            // now remove item from the view also.
+            this.removeItemFromList();
+          }
+        },
+        (err) => console.log(err),
+        ()=> console.log("")
+        );
+  }
+  public removeItemFromList(){
+    let index = this.arrayObjectIndexOf(this.postss,this.selectedPostID,"id");
+    this.postss.splice(index,1);
+  }
+
+  private arrayObjectIndexOf(myArray, searchTerm, property) {
+    for(var i = 0, len = myArray.length; i < len; i++) {
+        if (myArray[i][property] === searchTerm) return i;
+    }
+    return -1;
+ }
 
 
 

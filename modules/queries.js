@@ -104,8 +104,14 @@ Queries.prototype.performOperation = function(res, req, code, params) {
     else if(code == this.codes.UPDATE_USER_DETAILS){
         this.updateUserDetails(res,req,params);
     }
+    else if(code == this.codes.POSTS_DELETE_FILE){
+        this.deletePost(res,req,params);
+    }
 }
-
+Queries.prototype.deletePost = function(res,req,params){
+    var query = 'delete from "UserUploads" WHERE id='+params.postid;
+    this.run(res,req,query);
+}
 Queries.prototype.updateUserDetails = function(res,req,params){
     if(params.password !== undefined){
         var encryptedPassword = passwordHash.generate(params.password);
