@@ -58,7 +58,6 @@ export class UploadsListComponent{
         (err) => console.log(err),
         ()=> console.log("")
         );
-
   }
 
   selectedDeletionPost(id:number){

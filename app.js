@@ -4,6 +4,7 @@ var cors = require('cors');
 var Query = require('./modules/queries.js');
 var Codes = require('./modules/codes.js');
 var multer = require('multer');
+var path = require('path')
 var schedule = require('node-schedule');
 var child_process = require('child_process');
 var bodyParser = require('body-parser');
@@ -20,7 +21,7 @@ app.use(bodyParser.json());
 // after the code that uses bodyParser and other cool stuff
 var originsWhitelist = [
   'http://localhost:4200',      //this is my front-end url for development
-  'another_url'
+  ''
 ];
 var corsOptions = {
   origin: function(origin, callback){
@@ -40,7 +41,10 @@ var storage = multer.diskStorage({
     cb(null, './uploads/')
   },
   filename: function (req, file, cb) {
-      cb(null, file.originalname+"_"+Date.now());
+      var ext = path.extname(file.originalname);
+      var filename = file.originalname.replace(ext,'');
+      filename = filename + Date.now() + ext;
+      cb(null, filename);
 
         var params = {
           title: req.body.title,
@@ -48,7 +52,7 @@ var storage = multer.diskStorage({
           categoryid: req.body.category,
           firstTime: req.body.firstTime,
           access_token: req.body.access_token,
-          fileName: file.originalname,
+          fileName: filename,
           id: req.body.id
         };
       
@@ -147,9 +151,6 @@ app.get('/getposts',cors(),function(req,res){
 
 /** This will bring only a specific users post */
 app.get('/userposts',cors(),function(req,res){
-
-
-
   var params = {
     lastpostid: req.query.lastpostid,
     access_token: req.query.access_token,
@@ -184,10 +185,7 @@ app.get('/downloadfile',cors(),function(req,res){
 });
 
 
-app.post('/updatecategory',cors(),function(req,res){
-
-
- 
+app.post('/updatecategory',cors(),function(req,res){ 
   var params = {
     access_token: req.body.access_token,
     id: req.body.id,
