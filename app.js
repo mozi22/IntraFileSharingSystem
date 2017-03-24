@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var cors = require('cors');
-var fs = require('fs');
 var Query = require('./modules/queries.js');
 var Codes = require('./modules/codes.js');
 var multer = require('multer');
 var schedule = require('node-schedule');
 var child_process = require('child_process');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var fs = require('fs-extra');
 var app = express();
 
 var codes = new Codes();
@@ -47,7 +47,7 @@ var storage = multer.diskStorage({
     cb(null, './uploads/')
   },
   filename: function (req, file, cb) {
-      cb(null, file.originalname);
+      cb(null, file.originalname+"_"+Date.now());
 
         var params = {
           title: req.body.title,
@@ -109,14 +109,7 @@ app.post('/updateuser',cors(),function(req,res){
 });
 
 
-/** Create backup at 2:30 AM every night */
-var j = schedule.scheduleJob({hour: 2, minute: 30}, function(){
 
-  /** Create the postgres script */
-  child_process.exec('path_to_bat_file', function(error, stdout, stderr) {
-      res.send('done');
-  });
-});
 
 app.post('/login',cors(), function (req, res) {
 
@@ -234,7 +227,66 @@ app.post('/insertcategory',cors(),function(req,res){
 
 
 
+/** Create backup at 2:30 AM every night */
+var j = schedule.scheduleJob({hour: 2, minute: 30}, function(){
 
+  console.log("job ran at = "+Date.now());
+
+  /** Create the postgres database script */
+  child_process.exec('Z:/filesharing/sharing_backup.bat', function(error, stdout, stderr) {
+  });
+
+  var filesinUploads = [];
+  var filesAlreadyBackedUp = [];
+
+
+  filesAlreadyBackedUp = walkSync('Z:/filesharing/uploads');
+  filesinUploads = walkSync('./uploads/');
+
+  /** Files which are not in the backedUp folder */
+  var intersection = [];
+
+  /** If there are no files in the backup folder. Just copy all the files in ./uploads folder */
+  if(filesAlreadyBackedUp.length == 0){
+    for(var i = 0 ; i < filesinUploads.length; i++){
+          copyFile(filesinUploads[i]);
+    }    
+  }
+  else{
+    /** If there are files in the backup folder. Only copy the ones which are new */
+    for(var i = 0 ; i < filesinUploads.length; i++){
+      for(var j = 0 ; j < filesAlreadyBackedUp.length; j++){
+
+        if(filesinUploads[i] == filesAlreadyBackedUp[j]){
+          break;
+        }
+
+        if(j == filesAlreadyBackedUp.length - 1){
+
+          // we didn't break until this last iteration. Hence this file does not exist in the backup folder.
+          copyFile(filesinUploads[i]);
+        }
+      }
+    }
+  }
+  res.send('done');
+});
+
+var walkSync = function(dir) {
+    files = fs.readdirSync(dir);
+    filelist = [];
+    files.forEach(function(file) {
+        filelist.push(file);
+    });
+    return filelist;
+};
+
+var copyFile = function(filename) {
+    fs.copy('./uploads/'+filename, 'Z:/filesharing/uploads/'+filename, err => {
+      if (err) return console.error(err)
+      console.log("success!")
+    });
+};
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
