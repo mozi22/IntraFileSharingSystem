@@ -15,19 +15,12 @@ var queryy = new Query(codes);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//  app.use(function (req, res, next) {
-//   res.setHeader('Access-Control-Allow-Origin', 'http://10.5.163.13:4200'); 
-//   res.setHeader('Access-Control-Allow-Methods', 'POST,GET');
-//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization');
-//   res.setHeader('Access-Control-Allow-Credentials', true);
-//   next()
-// });
  
 //app.user(bodyParser.json());
 // after the code that uses bodyParser and other cool stuff
 var originsWhitelist = [
   'http://localhost:4200',      //this is my front-end url for development
-  'http://10.5.163.13:4200'
+  'another_url'
 ];
 var corsOptions = {
   origin: function(origin, callback){
